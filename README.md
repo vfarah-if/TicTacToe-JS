@@ -32,4 +32,6 @@ TDD with REACT, Angular, Node, Vue or Vanilla JS. Remember to test drive what ev
   ```powershell
   npm i --save-dev enzyme enzyme-adapter-react-16
   ```
+- Jest cheatsheet can be found https://github.com/sapegin/jest-cheat-sheet
+- Enzyme cheatsheet https://devhints.io/enzyme
 - TDD away
