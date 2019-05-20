@@ -114,5 +114,22 @@
             8            
         ],
         "expectedWinner": "Winner: X"
+    },
+    {
+        "scenario": "should present a winner when the right diagonal row is uniform",
+        "example": [
+            "X   0",
+            "X 0  ",
+            "0   X"
+        ],
+        "data": [
+            0,
+            2,
+            3,
+            4,
+            8,
+            6
+        ],
+        "expectedWinner": "Winner: 0"
     }
 ]

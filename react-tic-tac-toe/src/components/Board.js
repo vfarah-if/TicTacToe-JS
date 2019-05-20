@@ -63,7 +63,8 @@ class Board extends Component {
             [TOP_MIDDLE, MIDDLE, BOTTOM_MIDDLE],
             [BOTTOM_RIGHT, MIDDLE_RIGHT, TOP_RIGHT],
             // Diagonal Lines
-            [TOP_LEFT, MIDDLE, BOTTOM_RIGHT]
+            [TOP_LEFT, MIDDLE, BOTTOM_RIGHT],
+            [TOP_RIGHT, MIDDLE, BOTTOM_LEFT]
 
         ];
         for (let index = 0; index < lines.length; index++) {
