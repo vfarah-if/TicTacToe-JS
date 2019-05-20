@@ -7,6 +7,9 @@ export const TOP_RIGHT = 2;
 export const MIDDLE_LEFT = 3;
 export const MIDDLE = 4;
 export const MIDDLE_RIGHT = 5;
+export const BOTTOM_LEFT = 6;
+export const BOTTOM_MIDDLE = 7;
+export const BOTTOM_RIGHT = 8;
 
 class Board extends Component {
     constructor(props) {
@@ -52,7 +55,8 @@ class Board extends Component {
     calculateWinner(squares) {
         const lines = [
             [TOP_LEFT, TOP_MIDDLE, TOP_RIGHT],
-            [MIDDLE_LEFT, MIDDLE, MIDDLE_RIGHT]
+            [MIDDLE_LEFT, MIDDLE, MIDDLE_RIGHT],
+            [BOTTOM_LEFT, BOTTOM_MIDDLE, BOTTOM_RIGHT]
         ];
         for (let index = 0; index < lines.length; index++) {
             const [a, b, c] = lines[index];
@@ -78,19 +82,19 @@ class Board extends Component {
             <div>
                 <div className="status">{status}</div>
                 <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+                    {this.renderSquare(TOP_LEFT)}
+                    {this.renderSquare(TOP_MIDDLE)}
+                    {this.renderSquare(TOP_RIGHT)}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
+                    {this.renderSquare(MIDDLE_LEFT)}
+                    {this.renderSquare(MIDDLE)}
+                    {this.renderSquare(MIDDLE_RIGHT)}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
+                    {this.renderSquare(BOTTOM_LEFT)}
+                    {this.renderSquare(BOTTOM_MIDDLE)}
+                    {this.renderSquare(BOTTOM_RIGHT)}
                 </div>
             </div>
         );
