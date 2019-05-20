@@ -14,8 +14,17 @@ class Board extends Component {
 
     handleClick(i) {
         const squares = this.state.squares.slice();
-        squares[i] = this.state.isPlayerOneActive ? this.state.playerOne : this.state.playerTwo;
-        const isPlayerOneActive = !this.state.isPlayerOneActive;
+        if(!this.isSquareUsed(squares[i])){
+            squares[i] = this.state.isPlayerOneActive ? this.state.playerOne : this.state.playerTwo;
+            this.updateState(squares, !this.state.isPlayerOneActive);    
+        }
+    }
+
+    isSquareUsed(square){
+        return square !== null;
+    }
+
+    updateState(squares, isPlayerOneActive) {
         this.setState({
             squares: squares,
             isPlayerOneActive: isPlayerOneActive

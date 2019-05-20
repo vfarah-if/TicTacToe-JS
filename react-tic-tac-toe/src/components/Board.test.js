@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Board from './Board';
 
@@ -24,4 +24,35 @@ describe('Board', () => {
         const elements = getSquares(wrapper);
         expect(elements.length).toBe(9)
     });    
+
+    it('should toggle active players', () => {
+        const wrapper = shallow(<Board/>)
+        const elements = getSquares(wrapper);
+        let status = getStatus(wrapper);
+        expect(status.text()).toBe('Next player: X')
+        const firstSquare = elements.first();
+        firstSquare.simulate('click');
+        status = getStatus(wrapper);
+        expect(status.text()).toBe('Next player: 0')
+    });    
+
+    it('should prevent the same position being edited more that once', () => {
+        const wrapper = mount(<Board/>)
+        const squares = getSquares(wrapper);
+        const firstSquare = squares.first();
+        expect(firstSquare.text()).toBe('');
+        expect(getStatus(wrapper).text()).toBe('Next player: X')
+
+        firstSquare.simulate('click');
+        wrapper.update();
+
+        expect(firstSquare.text()).toBe('X');
+        expect(getStatus(wrapper).text()).toBe('Next player: 0')
+
+        firstSquare.simulate('click');
+        wrapper.update();
+
+        expect(firstSquare.text()).toBe('X');
+        expect(getStatus(wrapper).text()).toBe('Next player: 0')
+    });        
 });
