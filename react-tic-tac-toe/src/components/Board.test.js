@@ -5,7 +5,6 @@ import Board from './Board';
 // import the test scenarios from a file to generate repetitive tests
 import testScenarios from './Board.test.scenarios.json';
 
-
 function getSquares(wrapper) {
     return wrapper.find('Square');
 }
@@ -67,6 +66,7 @@ describe('Board', () => {
             theory.data.forEach(cell => {
                 wrapper.instance().handleClick(cell);
             });
+            console.log('Example', theory.example);            
             expect(getStatus(wrapper).text()).toBe(theory.expectedWinner)
         });
     });
