@@ -1,3 +1,10 @@
+## React tic-tac-toe
+The concept is based largely on the [tic-tac-toe tutorial](https://reactjs.org/tutorial/tutorial.html) published by react, however I have taken the same concepts and written tests with Jest and Enzyme for each scenario before I worked through the tutorial trying to understand react concepts. I renamed certain things to make it more readable, altered the format slightly, used constants to explain the array positions. This is more for anyone wanting to practise TDD with a familiar pattern, learning REACT and TDD in the same space. 
+
+Once you have mastered this, feel free to go to the same tutorial link and try to do one of the other tutorials using the same testing constructs.
+
+![React tic tac toe](images/react-tic-tac-toe.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Additional test strategy
