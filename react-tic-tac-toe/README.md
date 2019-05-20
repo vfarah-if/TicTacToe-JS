@@ -7,6 +7,10 @@ Once you have mastered this, feel free to go to the same tutorial link and try t
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TODO:
+1. Add the history stack.
+2. Do a gist on the details of this KATA.
+
 ## Additional test strategy
 [https://github.com/webpack-contrib/json-loader](https://github.com/webpack-contrib/json-loader) is a new way I wanted to experiment with scenario based testing. I based my testing pattern on scenarios, so the JSON is formatted in such a way that each scenario is presented with an example, test data and a final expectation. The thing is I usually tweek with the package.json to allow me to import files, and then I reference them usually with some odd default format, but this was painless and easy to npm install the library and use it as required.
 
