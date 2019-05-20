@@ -31,5 +31,17 @@
             8
         ],
         "expectedWinner": "Winner: X"
+    },
+    {
+        "scenario": "should present a winner when the left vertical row is uniform",
+        "data": [
+            1,
+            0,
+            2,
+            3,
+            4,
+            6
+        ],
+        "expectedWinner": "Winner: 0"
     }
 ]

@@ -56,7 +56,8 @@ class Board extends Component {
         const lines = [
             [TOP_LEFT, TOP_MIDDLE, TOP_RIGHT],
             [MIDDLE_LEFT, MIDDLE, MIDDLE_RIGHT],
-            [BOTTOM_LEFT, BOTTOM_MIDDLE, BOTTOM_RIGHT]
+            [BOTTOM_LEFT, BOTTOM_MIDDLE, BOTTOM_RIGHT],
+            [TOP_LEFT, MIDDLE_LEFT, BOTTOM_LEFT]
         ];
         for (let index = 0; index < lines.length; index++) {
             const [a, b, c] = lines[index];
