@@ -1,7 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Board from './Board';
+import Board, { 
+    TOP_LEFT, TOP_MIDDLE, TOP_RIGHT, 
+    MIDDLE_LEFT, MIDDLE, MIDDLE_RIGHT 
+    } 
+    from './Board';
 
 function getSquares(wrapper) {
     return wrapper.find('Square');
@@ -54,5 +58,17 @@ describe('Board', () => {
 
         expect(firstSquare.text()).toBe('X');
         expect(getStatus(wrapper).text()).toBe('Next player: 0')
-    });        
+    }); 
+    
+    it('should present a winner when the top row is uniform', () => {
+        const wrapper = mount(<Board/>)
+        wrapper.instance().handleClick(TOP_LEFT);   // X
+        wrapper.instance().handleClick(MIDDLE_LEFT);// 0
+        wrapper.instance().handleClick(TOP_MIDDLE); // X
+        wrapper.instance().handleClick(MIDDLE);     // 0
+        wrapper.instance().handleClick(TOP_RIGHT);  // X
+
+        expect(getStatus(wrapper).text()).toBe('Winner: X')
+    });
+    
 });

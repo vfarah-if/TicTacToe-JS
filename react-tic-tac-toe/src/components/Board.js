@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import Square from './Square';
 
+export const TOP_LEFT = 0;
+export const TOP_MIDDLE = 1;
+export const TOP_RIGHT = 2;
+export const MIDDLE_LEFT = 3;
+export const MIDDLE = 4;
+export const MIDDLE_RIGHT = 5;
+
 class Board extends Component {
     constructor(props) {
         super(props);
@@ -8,26 +15,31 @@ class Board extends Component {
             isPlayerOneActive: true,
             playerOne: 'X',
             playerTwo: '0',
-            squares: Array(9).fill(null),                                    
+            squares: Array(9).fill(null),
+            winner: null
         };
     }
 
     handleClick(i) {
-        const squares = this.state.squares.slice();
-        if(!this.isSquareUsed(squares[i])){
-            squares[i] = this.state.isPlayerOneActive ? this.state.playerOne : this.state.playerTwo;
-            this.updateState(squares, !this.state.isPlayerOneActive);    
+        if (!this.state.winner) {
+            const squares = this.state.squares.slice();
+            if (this.isEmpty(squares[i])) {
+                squares[i] = this.state.isPlayerOneActive ? this.state.playerOne : this.state.playerTwo;
+                const winner = this.calculateWinner(squares);
+                this.updateState(squares, !this.state.isPlayerOneActive, winner);
+            }
         }
     }
 
-    isSquareUsed(square){
-        return square !== null;
+    isEmpty(square) {
+        return square === null;
     }
 
-    updateState(squares, isPlayerOneActive) {
+    updateState(squares, isPlayerOneActive, winner) {
         this.setState({
             squares: squares,
-            isPlayerOneActive: isPlayerOneActive
+            isPlayerOneActive: isPlayerOneActive,
+            winner: winner
         });
     }
 
@@ -37,10 +49,24 @@ class Board extends Component {
             onClick={() => this.handleClick(i)} />;
     }
 
-    render() {
-        const { isPlayerOneActive, playerOne, playerTwo } = this.state;
+    calculateWinner(squares) {
+        const [a, b, c] = [TOP_LEFT, TOP_MIDDLE, TOP_RIGHT];
+        if (this.lineIsEqual(squares, a, b, c)) {
+            return squares[a];
+        }
+        return null;
+    }
 
-        const status = `Next player: ${isPlayerOneActive?playerOne:playerTwo}`;
+    lineIsEqual(squares, a, b, c) {
+        return squares[a] && squares[a] === squares[b] && squares[a] === squares[c];
+    }
+
+    render() {
+        const { isPlayerOneActive, playerOne, playerTwo, winner } = this.state;
+        let status = `Next player: ${isPlayerOneActive ? playerOne : playerTwo}`;
+        if (winner) {
+            status = `Winner: ${winner}`;
+        }
         return (
             <div>
                 <div className="status">{status}</div>
