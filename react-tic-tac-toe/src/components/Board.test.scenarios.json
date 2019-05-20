@@ -1,0 +1,35 @@
+[
+    {
+        "scenario": "should present a winner when the top horizontal row is uniform",
+        "data": [
+            0,
+            3,
+            1,
+            4,
+            2
+        ],
+        "expectedWinner": "Winner: X"
+    },
+    {
+        "scenario": "should present a winner when the middle horizontal row is uniform",
+        "data": [
+            3,
+            0,
+            4,
+            1,
+            5
+        ],
+        "expectedWinner": "Winner: X"
+    },
+    {
+        "scenario": "should present a winner when the bottom horizontal row is uniform",
+        "data": [
+            6,
+            3,
+            7,
+            4,
+            8
+        ],
+        "expectedWinner": "Winner: X"
+    }
+]

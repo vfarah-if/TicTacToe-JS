@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0"
+    "enzyme-adapter-react-16": "^1.13.0",
+    "json-loader": "^0.5.7"
   },
   "globals": [
     "flushPromises",

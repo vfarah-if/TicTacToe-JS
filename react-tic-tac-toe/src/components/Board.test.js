@@ -1,11 +1,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Board, {
-    TOP_LEFT, TOP_MIDDLE, TOP_RIGHT,
-    MIDDLE_LEFT, MIDDLE, MIDDLE_RIGHT,
-    BOTTOM_LEFT, BOTTOM_MIDDLE, BOTTOM_RIGHT,
-} from './Board';
+import Board from './Board';
+// import the test scenarios from a file to generate repetitive tests
+import testScenarios from './Board.test.scenarios.json';
+
 
 function getSquares(wrapper) {
     return wrapper.find('Square');
@@ -60,46 +59,15 @@ describe('Board', () => {
         expect(getStatus(wrapper).text()).toBe('Next player: 0')
     });
 
-    it('should present a winner when the top horizontal row is uniform', () => {
-        const wrapper = mount(<Board />)
-        // X X X
-        // 0 0 -
-        // - - -
-        wrapper.instance().handleClick(TOP_LEFT);   // X
-        wrapper.instance().handleClick(MIDDLE_LEFT);// 0
-        wrapper.instance().handleClick(TOP_MIDDLE); // X
-        wrapper.instance().handleClick(MIDDLE);     // 0
-        wrapper.instance().handleClick(TOP_RIGHT);  // X
-
-        expect(getStatus(wrapper).text()).toBe('Winner: X')
+    // Remarks : Utilised json-loader to load from a json file
+    testScenarios.forEach((theory: any) => {
+        it(theory.scenario, () => {
+            const wrapper = shallow(<Board />)
+            console.log('Scenario', theory.data, theory.expectedWinner);
+            theory.data.forEach(cell => {
+                wrapper.instance().handleClick(cell);
+            });
+            expect(getStatus(wrapper).text()).toBe(theory.expectedWinner)
+        });
     });
-
-    it('should present a winner when the middle horizontal row is uniform', () => {
-        const wrapper = mount(<Board />)
-        // 0 0 -
-        // X X X
-        // - - -
-        wrapper.instance().handleClick(MIDDLE_LEFT);
-        wrapper.instance().handleClick(TOP_LEFT);
-        wrapper.instance().handleClick(MIDDLE);
-        wrapper.instance().handleClick(TOP_MIDDLE);
-        wrapper.instance().handleClick(MIDDLE_RIGHT);
-
-        expect(getStatus(wrapper).text()).toBe('Winner: X')
-    });
-
-    it('should present a winner when the bottom horizontal row is uniform', () => {
-        const wrapper = mount(<Board />)
-        // 0 0 -
-        // - - -
-        // X X X
-        wrapper.instance().handleClick(BOTTOM_LEFT);
-        wrapper.instance().handleClick(TOP_LEFT);
-        wrapper.instance().handleClick(BOTTOM_MIDDLE);
-        wrapper.instance().handleClick(TOP_MIDDLE);
-        wrapper.instance().handleClick(BOTTOM_RIGHT);
-
-        expect(getStatus(wrapper).text()).toBe('Winner: X')
-    });
-    
 });
