@@ -36,7 +36,7 @@ describe('Board', () => {
         expect(status.text()).toBe('Next player: 0')
     });    
 
-    it('should prevent the same position being edited more that once', () => {
+    it('should prevent the same position being edited more than once', () => {
         const wrapper = mount(<Board/>)
         const squares = getSquares(wrapper);
         const firstSquare = squares.first();
