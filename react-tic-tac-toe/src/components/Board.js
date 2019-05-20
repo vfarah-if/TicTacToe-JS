@@ -50,10 +50,17 @@ class Board extends Component {
     }
 
     calculateWinner(squares) {
-        const [a, b, c] = [TOP_LEFT, TOP_MIDDLE, TOP_RIGHT];
-        if (this.lineIsEqual(squares, a, b, c)) {
-            return squares[a];
+        const lines = [
+            [TOP_LEFT, TOP_MIDDLE, TOP_RIGHT],
+            [MIDDLE_LEFT, MIDDLE, MIDDLE_RIGHT]
+        ];
+        for (let index = 0; index < lines.length; index++) {
+            const [a, b, c] = lines[index];
+            if (this.lineIsEqual(squares, a, b, c)) {
+                return squares[a];
+            }
         }
+
         return null;
     }
 

@@ -60,13 +60,30 @@ describe('Board', () => {
         expect(getStatus(wrapper).text()).toBe('Next player: 0')
     }); 
     
-    it('should present a winner when the top row is uniform', () => {
+    it('should present a winner when the top horizontal row is uniform', () => {
         const wrapper = mount(<Board/>)
+        // X X X
+        // 0 0 -
+        // - - -
         wrapper.instance().handleClick(TOP_LEFT);   // X
         wrapper.instance().handleClick(MIDDLE_LEFT);// 0
         wrapper.instance().handleClick(TOP_MIDDLE); // X
         wrapper.instance().handleClick(MIDDLE);     // 0
         wrapper.instance().handleClick(TOP_RIGHT);  // X
+
+        expect(getStatus(wrapper).text()).toBe('Winner: X')
+    });
+
+    it('should present a winner when the middle horizontal row is uniform', () => {
+        const wrapper = mount(<Board/>)
+        // 0 0 -
+        // X X X
+        // - - -
+        wrapper.instance().handleClick(MIDDLE_LEFT);
+        wrapper.instance().handleClick(TOP_LEFT);   
+        wrapper.instance().handleClick(MIDDLE);     
+        wrapper.instance().handleClick(TOP_MIDDLE); 
+        wrapper.instance().handleClick(MIDDLE_RIGHT);
 
         expect(getStatus(wrapper).text()).toBe('Winner: X')
     });
