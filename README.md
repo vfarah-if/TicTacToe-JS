@@ -1,5 +1,5 @@
 # TicTacToe-JS
-TDD with REACT, Angular, Node, Vue or Vanilla JS. Remember to test drive what ever you do and append any environment enstructions
+TDD with REACT, Angular, Node, Vue or Vanilla JS. Remember to test drive what ever you do and append any environment instructions
 
 ## Kata description
 
