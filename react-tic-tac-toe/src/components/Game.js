@@ -11,22 +11,19 @@ export default class Game extends Component {
             isPlayerOneActive: true,
             playerOne: 'X',
             playerTwo: '0',
-            history: [
-                { squares: Array(9).fill(null) }
-            ],
+            squares: Array(9).fill(null),
             winner: null
         };
     }
 
     handleClick(i) {
         if (!this.state.winner) {
-            const { history } = this.state;
-            const current = history[history.length -1];
-            const squares = current.squares.slice();
+            const squares = this.state.squares.slice();
+           
             if (this.isEmpty(squares[i])) {
                 squares[i] = this.state.isPlayerOneActive ? this.state.playerOne : this.state.playerTwo;
                 const winner = this.calculateWinner(squares);
-                this.updateState(history, squares, !this.state.isPlayerOneActive, winner);
+                this.updateState(squares, !this.state.isPlayerOneActive, winner);
             }
         }
     }
@@ -35,11 +32,9 @@ export default class Game extends Component {
         return square === null;
     }
 
-    updateState(history, squares, isPlayerOneActive, winner) {
+    updateState(squares, isPlayerOneActive, winner) {
         this.setState({
-            history: history.concat([{
-                squares: squares
-              }]),
+            squares: squares,
             isPlayerOneActive: isPlayerOneActive,
             winner: winner
         });
@@ -61,8 +56,7 @@ export default class Game extends Component {
     }
 
     render() {
-        const { isPlayerOneActive, playerOne, playerTwo, winner, history } = this.state;
-        const current = history[history.length - 1];
+        const { isPlayerOneActive, playerOne, playerTwo, winner, squares } = this.state;
         let status = `Next player: ${isPlayerOneActive ? playerOne : playerTwo}`;
         if (winner) {
             status = `Winner: ${winner}`;
@@ -71,7 +65,7 @@ export default class Game extends Component {
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board squares={current.squares} onClick={(i) => this.handleClick(i)} />
+                    <Board squares={squares} onClick={(i) => this.handleClick(i)} />
                 </div>
                 <div className="game-info">
                     <div className="status">{status}</div>

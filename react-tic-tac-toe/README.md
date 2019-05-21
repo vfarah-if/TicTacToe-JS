@@ -1,17 +1,13 @@
 ## React tic-tac-toe
 The concept is based largely on the [tic-tac-toe tutorial](https://reactjs.org/tutorial/tutorial.html) published by react, however I have taken the same concepts and written tests with Jest and Enzyme for each scenario before I worked through the tutorial trying to understand react concepts.
 
-Reacts tutorial is not great for TDD, adds a lot of design decisions upfront making it hard to TDD. My honest opinion is I would use that exercise to get familiar with React, but then I would delete it and start again. It is hard to retrofit some of the ideas into a TDD structure the way the current code is written, however I have kept it similar to inorder to keep the teaching tutorial itself as the basis for enhancing it to TDD. I renamed certain things to make it more readable, altered the format slightly, used constants to explain the array positions. This is more for anyone wanting to practise testing with a familiar pattern, learning REACT and testing in the same space. 
+Reacts tutorial is not great for TDD, adds a lot of design decisions upfront making it hard to TDD. My honest opinion is I would use that exercise to get familiar with React, but then I would delete it and start again. It is hard to retrofit some of the ideas into a TDD structure the way the current code is written, however I have kept it similar to in order to keep the teaching tutorial itself as the basis for enhancing it to TDD. I renamed certain things to make it more readable, altered the format slightly, used constants to explain the array positions. This is more for anyone wanting to practise testing with a familiar pattern, learning REACT and testing in the same space. 
 
 Once you have mastered this, feel free to go to the same tutorial link and try to do one of the other tutorials but doing it utilising TDD in a purer format.
 
 ![React tic tac toe](images/react-tic-tac-toe.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## TODO:
-1. Add the history stack.
-2. Do a gist on the details of this KATA.
 
 ## Additional test strategy
 [https://github.com/webpack-contrib/json-loader](https://github.com/webpack-contrib/json-loader) is a new way I wanted to experiment with scenario based testing. I based my testing pattern on scenarios, so the JSON is formatted in such a way that each scenario is presented with an example, test data and a final expectation. The thing is I usually tweek with the package.json to allow me to import files, and then I reference them usually with some odd default format, but this was painless and easy to npm install the library and use it as required.
