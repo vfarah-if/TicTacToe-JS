@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 import Board from './Board';
-import {    
+import {
     LINES
 } from './Constants';
 
-export default class Game extends Component {   
+export default class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isPlayerOneActive: true,
             playerOne: 'X',
             playerTwo: '0',
-            squares: Array(9).fill(null),
+            history: [
+                { squares: Array(9).fill(null) }
+            ],
             winner: null
         };
     }
 
     handleClick(i) {
         if (!this.state.winner) {
-            const squares = this.state.squares.slice();
+            const { history } = this.state;
+            const current = history[history.length -1];
+            const squares = current.squares.slice();
             if (this.isEmpty(squares[i])) {
                 squares[i] = this.state.isPlayerOneActive ? this.state.playerOne : this.state.playerTwo;
                 const winner = this.calculateWinner(squares);
-                this.updateState(squares, !this.state.isPlayerOneActive, winner);
+                this.updateState(history, squares, !this.state.isPlayerOneActive, winner);
             }
         }
     }
@@ -31,15 +35,17 @@ export default class Game extends Component {
         return square === null;
     }
 
-    updateState(squares, isPlayerOneActive, winner) {
+    updateState(history, squares, isPlayerOneActive, winner) {
         this.setState({
-            squares: squares,
+            history: history.concat([{
+                squares: squares
+              }]),
             isPlayerOneActive: isPlayerOneActive,
             winner: winner
         });
-    }    
+    }
 
-    calculateWinner(squares) {        
+    calculateWinner(squares) {
         for (let index = 0; index < LINES.length; index++) {
             const [a, b, c] = LINES[index];
             if (this.lineIsUniform(squares, a, b, c)) {
@@ -55,7 +61,8 @@ export default class Game extends Component {
     }
 
     render() {
-        const { isPlayerOneActive, playerOne, playerTwo, winner, squares } = this.state;
+        const { isPlayerOneActive, playerOne, playerTwo, winner, history } = this.state;
+        const current = history[history.length - 1];
         let status = `Next player: ${isPlayerOneActive ? playerOne : playerTwo}`;
         if (winner) {
             status = `Winner: ${winner}`;
@@ -64,13 +71,13 @@ export default class Game extends Component {
         return (
             <div className="game">
                 <div className="game-board">
-                    <Board squares={squares} onClick={(i) => this.handleClick(i)} />
+                    <Board squares={current.squares} onClick={(i) => this.handleClick(i)} />
                 </div>
                 <div className="game-info">
                     <div className="status">{status}</div>
-                </div>            
+                </div>
             </div>
-            
+
         );
     }
 }
