@@ -6,7 +6,6 @@ import { TOP_LEFT } from './Constants';
 // import the test scenarios from a file to generate repetitive tests, see test at bottom for more
 import testScenarios from './Game.test.scenarios.json';
 
-
 function getBoardElement(wrapper) {
     return wrapper.find('game.game-board>Board');
 }
