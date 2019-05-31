@@ -51,7 +51,7 @@ describe('Game', () => {
     });
 
     // Remarks : Utilised json-loader to load scenarios from a json file
-    testScenarios.forEach((theory: any) => {
+    testScenarios.forEach((theory) => {
         it(theory.scenario, () => {
             const wrapper = shallow(<Game />)
             console.log('Scenario', theory.data, theory.expectedWinner);

@@ -1,7 +1,7 @@
-## React tic-tac-toe
+# React tic-tac-toe
 The concept is based largely on the [tic-tac-toe tutorial](https://reactjs.org/tutorial/tutorial.html) published by react, however I have taken the same concepts and written tests with Jest and Enzyme for each scenario before I worked through the tutorial trying to understand react concepts.
 
-Reacts tutorial is not great for TDD, adds a lot of design decisions upfront making it hard to TDD. My honest opinion is I would use that exercise to get familiar with React, but then I would delete it and start again. It is hard to retrofit some of the ideas into a TDD structure the way the current code is written, however I have kept it similar to in order to keep the teaching tutorial itself as the basis for enhancing it to TDD. I renamed certain things to make it more readable, altered the format slightly, used constants to explain the array positions. This is more for anyone wanting to practise testing with a familiar pattern, learning REACT and testing in the same space.
+Reacts tutorial is not great for TDD, adds a lot of design decisions upfront making it hard to TDD. My honest opinion is I would use that exercise to get familiar with React, but then I would delete it and start again. It is hard to retrofit some of the ideas into a TDD structure the way the current code is written, however I have kept it similar to the tutorial in order to keep the teaching aid similar but with the notion of testing in mind. I renamed certain things to make it more readable, altered the format slightly, used constants to explain the array positions. This is more for anyone wanting to practise testing with a familiar pattern, learning REACT and testing in the same space.
 
 Once you have mastered this, feel free to go to the same tutorial link and try to do one of the other tutorials but doing it utilising TDD in a purer format.
 
@@ -21,6 +21,19 @@ Start by importing the json file into the test class e.g.
 The test code is based on iterating through the test scenarios structuring the scenarios data with whatever data parameters you want to pass in to the test. This is json data, so it is up to you how you want this to look. 
 
 ![Test code](images/test-script.png)
+
+## Outside in TDD
+Testing tic-tac-toe through the original tutorial, *Game* was a small component with an overloaded board component containing the game logic. The board was essentially the starting point, if you follow the tutorial precisely, but after a final refactoring at the end of the tutorial, the *Game* looks like the starting point of everything. 
+
+Starting simply I would have put most of the logic on the *Game* component, including the board logic and slowly refactor out abstractions or components when I thought the component was doing too much (SRP.) The domain board shouts out from the requiments but it can create unintentional complexity if done up front. The first test would have been based on the player X, who must go first based on the rules of the game. On the theme of players, I would work on toggling the players. See [Game test](src/components/Game.test.js) for more details. 
+
+The next tests would help me focus on the board and the logical test positions. That would move me from the outside to the inside, which is the board. It is made up of three rows of squares, the square being responsible for showing three states, 0, X or a default empty state. So board would only be responsponsible for defining this matrix of squares and passing values back to the squares. See [Board test](src/components/Board.test.js) for more details. 
+
+The square is only a visual button for displaying and invoking a click event to move the state from its default, if possible. See [Square test](src/components/Square.test.js) for more details.
+
+Focusing on the board and the one simple test of defining the 9 squares was simple but effective. This immediatly placed focus on the square and the tests focused on passing a value to display and defining a click event notifying observers that something should occur. The next focus would then be on working out the winning status on all unified rows. The edge cases would be the final scenario, like not being able to click on a square that already had an event assigned and moving out. See [Game test scenarios](src/components/Game.test.scenarios.json). The scenario test stragey was important for making each scenario human readable, and hence the emphasis on the additional testing strategy discussed previously.
+
+# Environment Details
 
 ## Available Scripts
 
