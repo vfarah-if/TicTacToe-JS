@@ -72,6 +72,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### `npm run coverage`
+
+**Note: this is a custom added action, to make running code coverage easier**
+
+The threshold is configured within the *packages.json* file, along with any file/folder exclusions or custom jest overrides, see "jest" attribute for more information. running this will output summary information and highlight any files that that may have bad code coverage.
+
+![Coverage Summary](images/code-coverage-summary.png)
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
