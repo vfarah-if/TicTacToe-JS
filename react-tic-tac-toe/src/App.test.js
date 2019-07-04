@@ -16,7 +16,7 @@ describe('App', () => {
     unmountComponentAtNode(div);
   });
   
-  it('should render a game using enzyme render', () => {
+  it('should render a game using enzyme', () => {
     const wrapper = shallow(<App />);
     const element = gameElement(wrapper);
     expect(element).toBeTruthy();
@@ -27,7 +27,6 @@ describe('App', () => {
     renderer.render(<App />);
     const result = renderer.getRenderOutput();
 
-    expect(result.type).toBe('div')
     expect(result.props.children).toMatchSnapshot();
   });
 });
