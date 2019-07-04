@@ -20,6 +20,5 @@ describe('Square', () => {
         expect(buttonElement).toBeTruthy();
         buttonElement.simulate('click');
         expect(mockCallBack.mock.calls.length).toEqual(1);
-    });
-
+    });    
 });

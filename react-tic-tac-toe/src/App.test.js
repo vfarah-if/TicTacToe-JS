@@ -18,15 +18,18 @@ describe('App', () => {
   
   it('should render a game using enzyme', () => {
     const wrapper = shallow(<App />);
+
     const element = gameElement(wrapper);
+
     expect(element).toBeTruthy();
   });
 
   it('should render a game using shallow renderer', () => {
     const renderer  = new ShallowRenderer();
-    renderer.render(<App />);
-    const result = renderer.getRenderOutput();
 
+    renderer.render(<App />);
+
+    const result = renderer.getRenderOutput();
     expect(result.props.children).toMatchSnapshot();
   });
 });

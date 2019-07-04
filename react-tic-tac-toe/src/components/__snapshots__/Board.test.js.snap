@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board should create a board with 9 configured squares using shallow render 1`] = `
+Array [
+  <div
+    className="board-row"
+  >
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+  </div>,
+  <div
+    className="board-row"
+  >
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+  </div>,
+  <div
+    className="board-row"
+  >
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+    <Square
+      onClick={[Function]}
+      value={null}
+    />
+  </div>,
+]
+`;
