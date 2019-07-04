@@ -4,7 +4,6 @@ import { act } from 'react-test-renderer';
 import { render } from 'react-dom';
 
 import Board from './Board';
-import Square from './Square';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 export function getSquares(wrapper) {

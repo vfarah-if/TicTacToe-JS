@@ -71,7 +71,6 @@ export default class Game extends Component {
                     <div className="status">{status}</div>
                 </div>
             </div>
-
         );
     }
 }
