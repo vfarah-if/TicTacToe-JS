@@ -37,12 +37,12 @@ Focusing on the board and the one simple test of defining the 9 squares was simp
 
 ## Testing strategies
 
-A created some overloaded tests using enzyme, react-test-renderer to show how you could test using the different ideas.  Some tests are duplicated to show you the advantage and disadvantages of doing either. I included Enzyme within this to show what can and can't be done with this, there seemed to be some negative information linked to the enzyme library, in that it had many issues raised against it, promoted some bad testing practices. I found it to be simpler to use than the react-test-renderer it wrapped, however I chose one or the other depending on what I needed to achieve. 
+Created some overloaded tests using enzyme, react-test-renderer to show how you could test using the different ideas.  Some tests are duplicated to show you the advantage and disadvantages of doing either. Included Enzyme within this to show what can and can't be done with this, there seemed to be some negative information linked to the enzyme library, in that it had many git issues raised against it, promoted some bad testing practices. I presonally found it to be simpler to use than the react-test-renderer it wrapped, however I chose one or the other depending on what I needed to achieve and think you could do the same. 
 
 1. A simple rule for unit tests, all external dependencies need to be mocked.
-2. Test only the component and not it child components, they should have their own tests.
-3. Integration tests can access external resources and need to be separated from the unit tests and these are potentially slow, "expensive to run" and need to be be careful of side effects.
-4. System tests or e2e tests should test a user journey through the application, simple interaction that runs through the entire vertical
+2. Unit Test only the component and not the child components, except for maybe doing a test to make sure they are referenced with the correct arguments. They should have their own tests so shallow rendering seems the most appropriate.
+3. Integration tests can access external resources and need to be separated from the unit tests as they may be potentially slow, "expensive to run" and need to be be careful of side effects.
+4. System tests or e2e tests should test a user journey through the application, simple interaction that runs through the entire vertical in a simplistic way.
 5. Do not invert the test pyramid, and make sure unit tests are blazingly fast, test all edge cases, integration working through several components efficiently.
 
 ## Additional test strategy
