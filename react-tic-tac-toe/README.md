@@ -106,6 +106,14 @@ The threshold is configured within the *packages.json* file, along with any file
 
 ![Coverage Summary](images/code-coverage-summary.png)
 
+### `npm run cypress:open`
+
+**Note: this is a custom added action, to make running e2e tests easier**
+
+Configured Cypress to do e2e testing. I utilised typescript for investigating how well this would work, so you will probably need to install typescript globally in your local environment for this to run successfully.
+
+![Cypress Test Runner](C:\Dev\TicTacToe-JS\react-tic-tac-toe\images\cypress.png)
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
