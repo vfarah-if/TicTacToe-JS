@@ -110,9 +110,19 @@ The threshold is configured within the *packages.json* file, along with any file
 
 **Note: this is a custom added action, to make running e2e tests easier**
 
-Configured Cypress to do e2e testing. I utilised typescript for investigating how well this would work, so you will probably need to install typescript globally in your local environment for this to run successfully.
+Configured Cypress to do e2e testing. Used *typescript* for investigating how well this would work, so you will probably need to install typescript globally in your local environment for this to run successfully.
 
-![Cypress Test Runner](C:\Dev\TicTacToe-JS\react-tic-tac-toe\images\cypress.png)
+```powershell
+npm install -g typescript
+```
+
+When tackling the e2e test, initially I create the simple logic of working out what needs to be done using the cypress library. After refactor the objects into a *PageObject* to remove repetition or to make the actual methods more descriptive.
+
+![Custom Page Object](images/cypress-page-object.png)
+
+The test runner is intuitive, displaying failed and passed tests on the left as well as the running of the application on the right.
+
+![Cypress Test Runner](images/cypress.png)
 
 ## Learn More
 
