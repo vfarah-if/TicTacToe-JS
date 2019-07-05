@@ -49,7 +49,7 @@ describe('Game', () => {
         expect(status.text()).toBe('Next player: 0');
     });
 
-    // NOTE: This is more like an integration test but the snapshot 
+    // NOTE: This loads all the subcomponents into a tree and allows interaction with the component and lifecyles
     //      is an interesting way to see the difference between shallow and create
     it('should toggle active players with create', () => {
         const component = create(<Game />)                
