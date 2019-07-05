@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game should create a board and set x as the first player 1`] = `
+Array [
+  <div
+    className="game-board"
+  >
+    <Board
+      onClick={[Function]}
+      squares={
+        Array [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+        ]
+      }
+    />
+  </div>,
+  <div
+    className="game-info"
+  >
+    <div
+      className="status"
+    >
+      Next player: X
+    </div>
+  </div>,
+]
+`;
+
+exports[`Game should toggle active players with create 1`] = `
+<div
+  className="game"
+>
+  <div
+    className="game-board"
+  >
+    <div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+        >
+          X
+        </button>
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="game-info"
+  >
+    <div
+      className="status"
+    >
+      Next player: 0
+    </div>
+  </div>
+</div>
+`;

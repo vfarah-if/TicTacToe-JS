@@ -9,18 +9,20 @@ Once you have mastered this, feel free to go to the same tutorial link and try t
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Additional test strategy
-[https://github.com/webpack-contrib/json-loader](https://github.com/webpack-contrib/json-loader) is a new way I wanted to experiment with scenario based testing. I based my testing pattern on scenarios, so the JSON is formatted in such a way that each scenario is presented with an example, test data and a final expectation. The thing is I usually tweek with the package.json to allow me to import files, and then I reference them usually with some odd default format, but this was painless and easy to npm install the library and use it as required.
+## How to start this
 
-![Custom Scenario based testing](images/board-test-scenarios.png)
+- Create empty react app
 
-Start by importing the json file into the test class e.g.
+   ```powershell
+   npx create-react-app react-tic-tac-toe
+   ```
+- Add Jest and enzyme testing framework (optional)
 
-![Import at the top of the script](images/import-test-scenarios.png)
-
-The test code is based on iterating through the test scenarios structuring the scenarios data with whatever data parameters you want to pass in to the test. This is json data, so it is up to you how you want this to look. 
-
-![Test code](images/test-script.png)
+  ```powershell
+  npm i --save-dev enzyme enzyme-adapter-react-16
+  ```
+- Jest cheatsheet can be found https://github.com/sapegin/jest-cheat-sheet
+- Enzyme cheatsheet https://devhints.io/enzyme
 
 ## Outside in TDD
 Testing tic-tac-toe through the original tutorial, *Game* was a small component with an overloaded board component containing the game logic. The board was essentially the starting point, if you follow the tutorial precisely, but after a final refactoring at the end of the tutorial, the *Game* looks like the starting point of everything. 
@@ -31,7 +33,31 @@ The next tests would help me focus on the board and the logical test positions. 
 
 The square is only a visual button for displaying and invoking a click event to move the state from its default, if possible. See [Square test](src/components/Square.test.js) for more details.
 
-Focusing on the board and the one simple test of defining the 9 squares was simple but effective. This immediatly placed focus on the square and the tests focused on passing a value to display and defining a click event notifying observers that something should occur. The next focus would then be on working out the winning status on all unified rows. The edge cases would be the final scenario, like not being able to click on a square that already had an event assigned and moving out. See [Game test scenarios](src/components/Game.test.scenarios.json). The scenario test stragey was important for making each scenario human readable, and hence the emphasis on the additional testing strategy discussed previously.
+Focusing on the board and the one simple test of defining the 9 squares was simple but effective. This immediatly placed focus on the square and the tests focused on passing a value to display and defining a click event notifying observers that something should occur. The next focus would then be on working out the winning status on all unified rows. The edge cases would be the final scenario, like not being able to click on a square that already had an event assigned and moving out. See [Game test scenarios](src/components/Game.test.scenarios.json). The scenario test strategey was important for making each scenario human readable, and hence the emphasis on the additional testing strategy discussed previously.
+
+## Testing strategies
+
+A created some overloaded tests using enzyme, react-test-renderer to show how you could test using the different ideas.  Some tests are duplicated to show you the advantage and disadvantages of doing either. I included Enzyme within this to show what can and can't be done with this, there seemed to be some negative information linked to the enzyme library, in that it had many issues raised against it, promoted some bad testing practices. I found it to be simpler to use than the react-test-renderer it wrapped, however I chose one or the other depending on what I needed to achieve. 
+
+1. A simple rule for unit tests, all external dependencies need to be mocked.
+2. Test only the component and not it child components, they should have their own tests.
+3. Integration tests can access external resources and need to be separated from the unit tests and these are potentially slow, "expensive to run" and need to be be careful of side effects.
+4. System tests or e2e tests should test a user journey through the application, simple interaction that runs through the entire vertical
+5. Do not invert the test pyramid, and make sure unit tests are blazingly fast, test all edge cases, integration working through several components efficiently.
+
+## Additional test strategy
+
+I wanted to experiment with scenario based testing, so the JSON is formatted in such a way that each scenario is presented with an example, test data and a final expectation. The thing is I usually tweak with the *package.json* to allow me to import files, and then I reference them usually with some odd default format, but this was painless and easy to *npm* *install* the library and use it as required.
+
+![Custom Scenario based testing](images/board-test-scenarios.png)
+
+Start by importing the json file into the test class e.g..
+
+![Import at the top of the script](images/import-test-scenarios.png)
+
+The test code is based on iterating through the test scenarios structuring the scenarios data with whatever data parameters you want to pass in to the test. This is json data, so it is up to you how you want this to look. 
+
+![Test code](images/test-script.png)
 
 # Environment Details
 

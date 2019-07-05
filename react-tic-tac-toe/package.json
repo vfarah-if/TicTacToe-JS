@@ -11,10 +11,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
       }
     }
   },
@@ -46,9 +46,12 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/react-test-renderer": "^16.8.2",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
-    "json-loader": "^0.5.7"
+    "react-test-renderer": "^16.8.6",
+    "ts-jest": "^24.0.2"
   },
   "globals": [
     "flushPromises",
