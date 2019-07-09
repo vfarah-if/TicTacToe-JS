@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import { create } from 'react-test-renderer';
 
 import Game from './Game';
 import { TOP_LEFT } from './Constants';
@@ -53,8 +54,9 @@ describe('Game', () => {
     //      is an interesting way to see the difference between shallow and create
     it('should toggle active players with create', () => {
         const component = create(<Game />)                
+        const root = component.root;
         const instance = root.instance;
-        expect(component.toJSON()).toContain('Next player: X');
+        expect(component.toJSON()).toEqual(expect.not.stringContaining('Next player: X'));
 
         instance.handleClick(TOP_LEFT);
 

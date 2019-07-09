@@ -1,11 +1,11 @@
-import { HomePage } from './../pageObjects/home.page';
+import { HomePage } from '../pageObjects/home.page';
 
 describe('Tic-tac-toe', () => {
-    let homePage: HomePage;
+    let homePage;
 
     beforeEach(() => {
         homePage = new HomePage();
-        homePage.visit();
+        homePage.visit();        
     });
 
     it('should start a game with player x', () => {

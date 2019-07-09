@@ -1,13 +1,13 @@
 export class HomePage {
-    visit(): any {
+    visit() {        
         return cy.visit('/');
     }    
 
-    getStatusElement(): any {
-        return cy.get('.status');
+    getStatusElement() {
+        return cy.get('.status');        
     }
 
-    getSquareElement(row:number, column: number): any {
+    getSquareElement(row, column) {
         return cy.get(`div.game-board > div > div:nth-child(${row}) > button:nth-child(${column})`);
     }
 }
